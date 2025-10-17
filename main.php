@@ -4,11 +4,12 @@ $name = $_POST['name'];
 $age = $_POST['age'];
 
 $errors = [];
-
 if (trim($name) == '') {
     $errors[] = "<strong>Nome</strong> precisa ser informado";
 }
-if ((int)$age <= 0) {
+if (!is_numeric($age)) {
+    $errors[] = "<strong>Idade</strong> deve ser um número.";
+} elseif ((int)$age <= 0) {
     $errors[] = "<strong>Idade</strong> não pode ser menor do que zero";
 }
 
