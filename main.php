@@ -1,5 +1,10 @@
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.html');
+    exit();
+}
+
 $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_NUMBER_INT);
 
